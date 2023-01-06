@@ -45,6 +45,7 @@ function Header({}: Props) {
           bgColor="transparent"
         />
       </motion.div>
+      <Link href='#contact'>
       <motion.div
         initial={{
           x: 500,
@@ -70,7 +71,8 @@ function Header({}: Props) {
         <p className="uppercase hidden md:inline-flex text-sm text-[#da9e63]">
           Contact Me
         </p>
-      </motion.div>
+        </motion.div>
+        </Link>
     </header>
   );
 }
