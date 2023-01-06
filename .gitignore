@@ -13,7 +13,7 @@
 /out/
 
 sanity/node_modules
-
+.env
 # production
 /build
 
