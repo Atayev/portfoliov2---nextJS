@@ -15,10 +15,10 @@ function Experiences({ experiences }: Props) {
       transition={{ duration: 1.2 }}
       className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row  px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl ">
+      <h3 className="absolute top-20 uppercase tracking-[20px] text-[#c2ab94] text-2xl ">
         Experience
       </h3>
-      <div className="w-full flex flex-shrink-0 snap-center space-x-5 mt-32 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
+      <div className="w-full flex flex-shrink-0 snap-center space-x-4 absolute top-20 overflow-x-scroll p-6 snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
         {experiences.map(experience => (
           <ExpCard experience={experience} />
           

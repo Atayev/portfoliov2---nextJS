@@ -1,9 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-type Props = {};
+import { Project } from "../pages/api/typings";
+import { urlFor } from "../sanity";
+import Link from "next/link";
+type Props = {
+  projects:Project[]
+};
 
-function Projects({}: Props) {
-  const projects = [1, 2, 3, 4, 5];
+function Projects({ projects }: Props) {
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -14,11 +19,11 @@ function Projects({}: Props) {
       <h3 className="absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl ">
         Projects
       </h3>
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 pt-16 mt-16  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
+      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 pt-3 mt-3 md:pt-16 md:mt-24  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
         {projects.map((project, i) => (
           <div
-            key={i}
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen "
+            key={project._id}
+            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-14 md:p-44 h-screen "
           >
             <motion.img
               initial={{
@@ -28,23 +33,16 @@ function Projects({}: Props) {
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="w-full h-full rounded-lg shadow-lg"
-              src="https://www.liquidplanner.com/wp-content/uploads/2019/04/HiRes-17.jpg"
+              className="bg-[#e68b31] rounded-lg shadow-lg md:h-full "
+              src={urlFor(project.image).url()}
               alt=""
             />
-            <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
-                <span className="underline decoration-[#c2ab94]">
-                  test case {i + 1} of {projects.length}
-                </span>{" "}
-                {project}
+              <h4 className="text-2xl md:text-4xl font-semibold text-center">
+                {project.title}
               </h4>
-              <p className="text-lg text-center  md:text-left">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum,
-                ipsa molestias ratione atque saepe dolorem minima eos, ipsam
-                velit repudiandae repellat labore quibusdam eligendi! In ipsum
-                praesentium provident voluptatum vel.
-              </p>
+            <div className="flex space-x-3 px-0 md:px-10 max-w-6xl">
+             
+              <Link href={project.linkToBuild}  className="bg-[#e68b31] py-5 px-10 rounded-md text-black font-bold text-lg animate-pulse">Live Preview</Link>
             </div>
           </div>
         ))}

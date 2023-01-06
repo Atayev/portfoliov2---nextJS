@@ -13,7 +13,7 @@ function About({pageInfo}: Props) {
           whileInView={{ opacity: 1 }}
           transition={{duration:1.2}}
           className='h-screen flex flex-col relative text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
-          <h3 className='absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl '>
+          <h3 className='absolute top-14 uppercase tracking-[20px] text-[#c2ab94] text-2xl '>
               About
           </h3>
           <motion.img
@@ -24,12 +24,12 @@ function About({pageInfo}: Props) {
               transition={{
                   duration:1.2
               }}
-             className='h-56 w-56 mt-96 md:my-32  -mb-20 md:mb-0 flex-shrink-0 rounded-full object-cover md:rounded-lg md:w-64 md:h-96'
+             className='h-48 w-48  -mb-20 md:mb-0 flex-shrink-0 rounded-full object-cover md:rounded-lg md:w-64 md:h-96'
               whileInView={{ x: 0 ,opacity:1}}
               viewport={{once:true}}
               src={urlFor(pageInfo?.profilePic).url()} />
-          <div className='space-y-10 px-0 md:px-10 mt-32'>
-              <h4 className='text-4xl font-semibold'>
+          <div className='space-y-10 px-0 md:px-10 '>
+              <h4 className='text-2xl md:text-4xl font-semibold'>
                   Here is a <span className='underline decoration-[#c2ab94]/50'>
                   little 
                   </span> background

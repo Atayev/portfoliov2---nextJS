@@ -15,6 +15,7 @@ import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSocials } from "../utils/fetchSocials";
+
 type Props = {
   pageInfo: PageInfo;
   experiences: Experience[];
@@ -32,6 +33,8 @@ export default function Home({
 }: Props) {
   return (
     <div className="bg-[#122223] text-[#da9e63] h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
+     
+     
       <Head>
         <title>Atayev Portfolio</title>
       </Head>
@@ -50,11 +53,11 @@ export default function Home({
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={ skills } />
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects}/>
       </section>
 
       <section id="contact" className="snap-start">

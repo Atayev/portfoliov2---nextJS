@@ -1,19 +1,25 @@
 import React from 'react'
 import {motion} from 'framer-motion'
-import Skill from './Skill'
-type Props = {}
+import OneSkill from './OneSkill'
+import { Skill } from '../pages/api/typings'
+type Props = {
+  skills:Skill[]
+}
 
-function Skills({}: Props) {
+function Skills({ skills }: Props) {
   return (
       <motion.div className='flex relative flex-col text-center md:text-left xl:flex-row max-w-[2000px] xl:px-10 min-h-screen xl:space-y-0 mx-auto items-center justify-center'>
-           <h3 className='absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl '>
+           <h3 className='absolute top-20 uppercase tracking-[20px] text-[#c2ab94] text-2xl '>
               Skills
           </h3>
 
-          <h3 className='absolute top-36 uppercase tracking-[3px] text-sm'>Hover over a skill for current proficiensy</h3>
+          <h3 className='absolute top-28 uppercase tracking-[3px] text-sm'>Hover over a skill for current proficiensy</h3>
 
-          <div className='grid grid-cols-4 gap-5'>
-              <Skill directionLeft/>
+      <div className='grid grid-cols-4 md:grid-cols-6 gap-4 md:pt-10'>
+        {skills.map(skill => (
+          <OneSkill  skill={skill}/>
+          
+        ))}
           </div>
     </motion.div>
   )
