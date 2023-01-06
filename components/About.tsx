@@ -1,8 +1,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-type Props = {}
+import { PageInfo } from '../pages/api/typings'
+import { urlFor } from '../sanity'
+type Props = {
+    pageInfo:PageInfo
+}
 
-function About({}: Props) {
+function About({pageInfo}: Props) {
   return (
       <motion.div
           initial={{ opacity: 0 }}
@@ -23,7 +27,7 @@ function About({}: Props) {
              className='h-56 w-56 mt-96 md:my-32  -mb-20 md:mb-0 flex-shrink-0 rounded-full object-cover md:rounded-lg md:w-64 md:h-96'
               whileInView={{ x: 0 ,opacity:1}}
               viewport={{once:true}}
-              src='https://i.ibb.co/svFHZN3/msg1882371139-33693.jpg' />
+              src={urlFor(pageInfo?.profilePic).url()} />
           <div className='space-y-10 px-0 md:px-10 mt-32'>
               <h4 className='text-4xl font-semibold'>
                   Here is a <span className='underline decoration-[#c2ab94]/50'>
@@ -31,7 +35,7 @@ function About({}: Props) {
                   </span> background
               </h4>
               <p className='text-base'>
-                  Hi ,i'am Ibrahim and i am 24 y/o a result-oriented developer.I have studied Computer Science which provided me with some outstanding and technical skills. I consider myself equipped with most of web development skills, but I know I still need to learn a lot more. I am highly trainable and can easily learn tasks.  Eager to study and familiarize myself with new technologies. I can determine the cause of the problem, diagnose non-obvious problems, and find out-of-the-box solutions to solve them. I have working experience more than six months, also worked as a freelancer. My main goal is professional growth and gaining new skills.
+                  {pageInfo?.backgroundInformation}
               </p>
           </div>
     </motion.div>
