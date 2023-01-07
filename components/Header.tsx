@@ -1,6 +1,6 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-
+import { InboxIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Social } from "../pages/api/typings";
@@ -36,34 +36,31 @@ function Header({ socials }: Props) {
           />
         ))}
       </motion.div>
-      {/* <Link href="#contact"> */}
-        <motion.div
-          initial={{
-            x: 500,
-            opacity: 0,
-            scale: 0.5,
-          }}
-          animate={{
-            x: 0,
-            opacity: 1,
-            scale: 1,
-          }}
-          transition={{
-            duration: 1.2,
-          }}
-          className="flex flex-row items-center text-gray-300 cursor-pointer"
-        >
-          <SocialIcon
-            className="cursor-pointer"
-            network="email"
-            fgColor="#da9e63"
-            bgColor="transparent"
-          />
-          <p className="uppercase hidden md:inline-flex text-sm text-[#da9e63]">
-            Contact Me
-          </p>
-        </motion.div>
-      {/* </Link> */}
+      <motion.div
+        initial={{
+          x: 500,
+          opacity: 0,
+          scale: 0.5,
+        }}
+        animate={{
+          x: 0,
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 1.2,
+        }}
+        className="flex flex-row items-center  text-gray-300 cursor-pointer"
+      >
+        <Link href="#contact" className='flex space-x-2 '>
+        <InboxIcon
+          className="cursor-pointer mr-3 mt-3 md:mr-0 md:mt-0 w-6 h-6 text-[#da9e63]"
+        />
+        <p className="uppercase hidden md:inline-flex text-sm text-[#da9e63]" >
+          Get in touch
+        </p>
+        </Link>
+      </motion.div>
     </header>
   );
 }

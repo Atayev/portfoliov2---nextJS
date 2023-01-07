@@ -16,9 +16,11 @@ function Skills({ skills }: Props) {
           <h3 className='absolute top-28 uppercase tracking-[3px] text-sm'>Hover over a skill for current proficiensy</h3>
 
       <div className='grid grid-cols-4 md:grid-cols-6 gap-4 md:pt-10'>
-        {skills.map(skill => (
-          <OneSkill  skill={skill}/>
-          
+        {skills.slice(0,skills.length/2).map(skill => (
+          <OneSkill key={skill._id} directionLeft={false} skill={skill}/>
+        ))}
+        {skills.slice(skills.length/2,skills.length).map(skill => (
+          <OneSkill key={skill._id} directionLeft skill={skill}/>
         ))}
           </div>
     </motion.div>

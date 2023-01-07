@@ -20,10 +20,10 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 pt-3 mt-3 md:pt-16 md:mt-24  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
-        {projects.map((project, i) => (
+        {projects.map((project) => (
           <div
             key={project._id}
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-14 md:p-44 h-screen "
+            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-3 items-center justify-center p-14 md:p-44 h-screen "
           >
             <motion.img
               initial={{
@@ -37,6 +37,14 @@ function Projects({ projects }: Props) {
               src={urlFor(project.image).url()}
               alt=""
             />
+            <div className="flex justify-center items-center space-x-2">
+              {project.technologies.map(t => (
+                <img
+                  key={t._id}
+                  className="h-7 w-7 "
+                  src={urlFor(t.image).url()} alt="" />
+              ))}
+            </div>
               <h4 className="text-2xl md:text-4xl font-semibold text-center">
                 {project.title}
               </h4>

@@ -8,7 +8,7 @@ type Props = {
 
 function ExpCard({ experience }: Props) {
   return (
-    <article className="flex flex-col mt-6 md:mt-10 rounded-lg items-center space-y-7 flex-shrink-0 w-fit md:w-[600px] xl:w-full snap-center bg-[#0d191ac5]  hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
+    <article className="flex flex-col mt-6 md:mt-10 rounded-lg items-center space-y-2 flex-shrink-0 w-fit md:w-[600px] xl:w-full snap-center bg-[#0d191ac5]  hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
       <motion.img
         initial={{
           y: -100,
@@ -33,6 +33,7 @@ function ExpCard({ experience }: Props) {
         <div className="flex space-x-2 my-1">
           {experience?.technologies.map(t=>(
             <img
+              key={t._id}
             className="w-10 h-10  rounded-full object-cover"
             src={urlFor(t.image).url()} alt="" />
           ))}
@@ -40,10 +41,10 @@ function ExpCard({ experience }: Props) {
               </div>
         <p className="uppercase py-5 text-gray-300 ">{experience?.dateStarted} - {experience?.dateEnded}</p>
 
-              <ul className="list-disc space-y-4 text-lg md:mb-6">
+              <ul className="list-disc space-y-0 text-lg md:mb-6">
           {
             experience?.points.map(point => (
-              <li>
+              <li key={point}>
                 {point}
               </li>
             ))

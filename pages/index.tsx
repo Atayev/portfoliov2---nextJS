@@ -24,17 +24,9 @@ type Props = {
   socials: Social[];
 };
 
-export default function Home({
-  pageInfo,
-  experiences,
-  skills,
-  projects,
-  socials,
-}: Props) {
+function Home({ pageInfo, experiences, skills, projects, socials }: Props) {
   return (
     <div className="bg-[#122223] text-[#da9e63] h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
-     
-     
       <Head>
         <title>Atayev Portfolio</title>
       </Head>
@@ -45,19 +37,19 @@ export default function Home({
       </section>
 
       <section id="about" className="snap-center">
-        <About pageInfo={ pageInfo } />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
-        <Experiences experiences={ experiences } />
+        <Experiences experiences={experiences} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills skills={ skills } />
+        <Skills skills={skills} />
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects projects={projects}/>
+        <Projects projects={projects} />
       </section>
 
       <section id="contact" className="snap-start">
@@ -93,3 +85,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     revalidate: 10,
   };
 };
+
+export default Home;
