@@ -13,7 +13,7 @@ function Projects({ projects }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
+      className="h-screen relative flex  flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
     >
       <h3 className="absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl ">
         Projects
@@ -52,7 +52,7 @@ function Projects({ projects }: Props) {
             <div className="flex space-x-3 px-0 md:px-10 max-w-6xl">
               <Link
                 href={project.linkToBuild}
-                className="bg-[#e68b31] py-5 px-10 rounded-md text-black font-bold text-lg animate-pulse"
+                className="bg-[#e68b31] py-2 px-10 rounded-md text-black font-bold text-lg animate-pulse"
               >
                 Live Preview
               </Link>
