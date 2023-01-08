@@ -11,7 +11,7 @@ type Inputs = {
 }
 type Props = {};
 
-function Contact({ }: Props) {
+function Contact({  }: Props) {
   const { register, handleSubmit } = useForm<Inputs>()
   
   const onSubmit: SubmitHandler<Inputs> = formData => {

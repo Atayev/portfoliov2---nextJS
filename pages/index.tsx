@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import About from "../components/About";
@@ -7,14 +8,32 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import { HomeIcon } from "@heroicons/react/24/solid";
-import { GetStaticProps } from "next";
-import { Experience, Project, Skill, Social, PageInfo } from "./api/typings";
 import Experiences from "../components/Experiences";
+import { Experience, Project, Skill, Social, PageInfo } from "../typings";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSocials } from "../utils/fetchSocials";
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+  const experiences: Experience[] = await fetchExperiences();
+  const skills: Skill[] = await fetchSkills();
+  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      experiences,
+      skills,
+      projects,
+      socials,
+    },
+    revalidate: 10,
+  };
+};
 
 type Props = {
   pageInfo: PageInfo;
@@ -24,7 +43,7 @@ type Props = {
   socials: Social[];
 };
 
-function Home({ pageInfo, experiences, skills, projects, socials }: Props) {
+const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
     <div className="bg-[#122223] text-[#da9e63] h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#da9e63]">
       <Head>
@@ -65,25 +84,6 @@ function Home({ pageInfo, experiences, skills, projects, socials }: Props) {
       </Link>
     </div>
   );
-}
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocials();
-
-  return {
-    props: {
-      pageInfo,
-      experiences,
-      skills,
-      projects,
-      socials,
-    },
-    revalidate: 10,
-  };
 };
 
 export default Home;

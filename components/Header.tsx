@@ -3,7 +3,7 @@ import { SocialIcon } from "react-social-icons";
 import { InboxIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Social } from "../pages/api/typings";
+import { Social } from "../typings";
 type Props = {
   socials: Social[];
 };

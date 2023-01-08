@@ -1,7 +1,7 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 import OneSkill from './OneSkill'
-import { Skill } from '../pages/api/typings'
+import { Skill } from '../typings'
 type Props = {
   skills:Skill[]
 }

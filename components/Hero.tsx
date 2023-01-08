@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import { PageInfo } from "../pages/api/typings";
+import { PageInfo } from "../typings";
 import { urlFor } from "../sanity";
 import BackgroundCircles from "./BackgroundCircles";
 type Props = {

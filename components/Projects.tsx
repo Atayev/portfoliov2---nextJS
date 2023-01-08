@@ -1,14 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Project } from "../pages/api/typings";
+import { Project } from "../typings";
 import { urlFor } from "../sanity";
 import Link from "next/link";
 type Props = {
-  projects:Project[]
+  projects: Project[];
 };
 
 function Projects({ projects }: Props) {
-  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,22 +34,28 @@ function Projects({ projects }: Props) {
               viewport={{ once: true }}
               className="bg-[#e68b31] rounded-lg shadow-lg md:h-full "
               src={urlFor(project.image).url()}
-              alt=""
+              alt={project?._type}
             />
             <div className="flex justify-center items-center space-x-2">
-              {project.technologies.map(t => (
+              {project.technologies.map((t) => (
                 <img
                   key={t._id}
                   className="h-7 w-7 "
-                  src={urlFor(t.image).url()} alt="" />
+                  src={urlFor(t.image).url()}
+                  alt={t?._type}
+                />
               ))}
             </div>
-              <h4 className="text-2xl md:text-4xl font-semibold text-center">
-                {project.title}
-              </h4>
+            <h4 className="text-2xl md:text-4xl font-semibold text-center">
+              {project.title}
+            </h4>
             <div className="flex space-x-3 px-0 md:px-10 max-w-6xl">
-             
-              <Link href={project.linkToBuild}  className="bg-[#e68b31] py-5 px-10 rounded-md text-black font-bold text-lg animate-pulse">Live Preview</Link>
+              <Link
+                href={project.linkToBuild}
+                className="bg-[#e68b31] py-5 px-10 rounded-md text-black font-bold text-lg animate-pulse"
+              >
+                Live Preview
+              </Link>
             </div>
           </div>
         ))}

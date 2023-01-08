@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Experience } from "../pages/api/typings";
+import { Experience } from "../typings";
 import { urlFor } from "../sanity";
 type Props = {
-  experience:Experience
+  experience: Experience;
 };
 
 function ExpCard({ experience }: Props) {
@@ -25,32 +25,33 @@ function ExpCard({ experience }: Props) {
         src={urlFor(experience?.companyImage).url()}
         className="w-32 h-32 mt-3 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-top"
         alt="logo"
-          />
-          
-        <div className="px-0 md:px-10 ml-7">
-        <h4 className="text-2xl md:text-4xl font-light">{ experience?.jobTitle}</h4>
-              <p className="font-bold text-2xl mt-1">{experience?.company}</p>
+      />
+
+      <div className="px-0 md:px-10 ml-7">
+        <h4 className="text-2xl md:text-4xl font-light">
+          {experience?.jobTitle}
+        </h4>
+        <p className="font-bold text-2xl mt-1">{experience?.company}</p>
         <div className="flex space-x-2 my-1">
-          {experience?.technologies.map(t=>(
+          {experience?.technologies.map((t) => (
             <img
               key={t._id}
-            className="w-10 h-10  rounded-full object-cover"
-            src={urlFor(t.image).url()} alt="" />
+              className="w-10 h-10  rounded-full object-cover"
+              src={urlFor(t.image).url()}
+              alt={t?._type}
+            />
           ))}
-                  
-              </div>
-        <p className="uppercase py-5 text-gray-300 ">{experience?.dateStarted} - {experience?.dateEnded}</p>
+        </div>
+        <p className="uppercase py-5 text-gray-300 ">
+          {experience?.dateStarted} - {experience?.dateEnded}
+        </p>
 
-              <ul className="list-disc space-y-0 text-lg md:mb-6">
-          {
-            experience?.points.map(point => (
-              <li key={point}>
-                {point}
-              </li>
-            ))
-                }
-              </ul>
-          </div>
+        <ul className="list-disc space-y-0 text-lg md:mb-6">
+          {experience?.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </div>
     </article>
   );
 }

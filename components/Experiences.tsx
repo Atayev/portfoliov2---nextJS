@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ExpCard from "./ExpCard";
-import { Experience } from "../pages/api/typings";
+import { Experience } from "../typings";
 
 type Props = {
   experiences:Experience[]
