@@ -1,7 +1,9 @@
 import React from "react";
 import { PhoneIcon, MapIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-
 import { useForm, SubmitHandler } from 'react-hook-form'
+
+import {toast} from 'react-toastify'
+import emailjs from '@emailjs/browser';
 
 type Inputs = {
   name: string,
@@ -11,15 +13,22 @@ type Inputs = {
 }
 type Props = {};
 
-function Contact({  }: Props) {
+function Contact({ }: Props) {
   const { register, handleSubmit } = useForm<Inputs>()
-  
   const onSubmit: SubmitHandler<Inputs> = formData => {
-    window.location.href=`mailto:atayev25@gmail.com?subject=${formData.subject}&body=Hi,my name is ${formData.name}.${formData.message} (${formData.email})`
+    emailjs
+      .send('atayev_ibrahim', 'email.temp.ata', formData, 'gOPS6SHL2BWN26dwS')
+      .then(
+        (result) => {
+          toast.success('Message succesfully sent')
+          console.log(result)
+        },
+        (error) => {
+          toast.error('Oops something went wrong... :(');
+          console.log(error)
+        }
+      )
   }
-
-
-
   return (
     <div className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
       <h3 className="absolute top-24 uppercase tracking-[20px] text-[#c2ab94] text-2xl">
