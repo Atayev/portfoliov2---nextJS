@@ -11,9 +11,8 @@
 # next.js
 /.next/
 /out/
-.env.local
 sanity/node_modules
-
+.env
 # production
 /build
 
@@ -36,6 +35,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
 
 .vercel
 
